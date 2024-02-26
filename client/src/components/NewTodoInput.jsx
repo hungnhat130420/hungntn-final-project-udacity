@@ -11,16 +11,19 @@ export function NewTodoInput({ onNewTodo }) {
 
   const onTodoCreate = async (event) => {
     try {
+      console.log('vô hàm onTodoCreate')
       const accessToken = await getAccessTokenSilently({
         audience: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/`,
         scope: 'write:todos'
       })
       const dueDate = calculateDueDate()
+      console.log('dueDate', dueDate);
       const createdTodo = await createTodo(accessToken, {
         name: newTodoName,
         dueDate
       })
       onNewTodo(createdTodo)
+      console.log('New TODO created', createdTodo)
     } catch (e) {
       console.log('Failed to created a new TODO', e)
       alert('Todo creation failed')

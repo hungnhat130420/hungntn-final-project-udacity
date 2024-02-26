@@ -1,4 +1,6 @@
 service: serverless-todo-app
+org: hungnguyen123
+app: serverless-todo-app
 
 plugins:
   - serverless-iam-roles-per-function
